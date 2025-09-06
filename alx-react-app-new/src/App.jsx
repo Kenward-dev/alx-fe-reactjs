@@ -14,7 +14,6 @@ import UserContext from './components/UserContext'
 function App() {
   const [count, setCount] = useState(0)
   
-  // Sample user data
   const userData = {
     name: "Kenward Terhemba",
     email: "kenward@petpadi.com"
