@@ -1,10 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
 import './App.css';
 
-// Home component that combines AddRecipeForm and RecipeList
 const Home = () => {
   return (
     <>
@@ -14,16 +13,9 @@ const Home = () => {
   );
 };
 
-// Recipe Details wrapper to handle navigation after delete
 const RecipeDetailsPage = () => {
-  const navigate = useNavigate();
   const recipeId = window.location.pathname.split('/').pop();
-
-  const handleRecipeDeleted = () => {
-    navigate('/'); // Navigate back to home after deletion
-  };
-
-  return <RecipeDetails recipeId={recipeId} onRecipeDeleted={handleRecipeDeleted} />;
+  return <RecipeDetails recipeId={recipeId} />;
 };
 
 function App() {
