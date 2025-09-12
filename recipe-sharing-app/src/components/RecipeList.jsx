@@ -1,4 +1,4 @@
-import { useRecipeStore } from "./useRecipeStore";
+import { useRecipeStore } from "./recipeStore";
 
 // import { useRecipeStore } from '../../stores/useRecipeStore';
 
