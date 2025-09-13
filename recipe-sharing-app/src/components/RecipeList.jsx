@@ -1,6 +1,7 @@
 import { useRecipeStore } from './recipeStore';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import FavoriteButton from './FavoriteButton';
 
 const RecipeList = () => {
     const recipes = useRecipeStore(state => state.recipes);
@@ -41,14 +42,22 @@ const RecipeList = () => {
         margin: '10px 0',
         backgroundColor: '#fff',
         boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-        transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+        position: 'relative'
+    };
+
+    const favoriteIconStyle = {
+        position: 'absolute',
+        top: '10px',
+        right: '10px'
     };
 
     const titleStyle = {
         color: '#007bff',
         marginBottom: '8px',
         fontSize: '18px',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        paddingRight: '50px'
     };
 
     const descriptionStyle = {
@@ -81,7 +90,6 @@ const RecipeList = () => {
         margin: '20px 0'
     };
 
-    // Highlight search terms in text
     const highlightSearchTerm = (text, term) => {
         if (!term) return text;
         
@@ -145,6 +153,10 @@ const RecipeList = () => {
                         e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
                     }}
                 >
+                    <div style={favoriteIconStyle}>
+                        <FavoriteButton recipeId={recipe.id} size="small" />
+                    </div>
+
                     <Link to={`/recipe/${recipe.id}`} style={linkStyle}>
                         <h3 style={titleStyle}>
                             {highlightSearchTerm(recipe.title, searchTerm)}

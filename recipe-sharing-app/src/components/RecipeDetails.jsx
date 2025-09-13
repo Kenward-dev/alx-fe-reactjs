@@ -1,6 +1,7 @@
 import { useRecipeStore } from './recipeStore';
 import EditRecipeForm from './EditRecipeForm';
 import DeleteRecipeButton from './DeleteRecipeButton';
+import FavoriteButton from './FavoriteButton';
 import { useState } from 'react';
 
 const RecipeDetails = ({ recipeId }) => {
@@ -30,12 +31,20 @@ const RecipeDetails = ({ recipeId }) => {
   const headerStyle = {
     borderBottom: '2px solid #007bff',
     paddingBottom: '10px',
-    marginBottom: '20px'
+    marginBottom: '20px',
+    position: 'relative'
+  };
+
+  const favoriteHeaderStyle = {
+    position: 'absolute',
+    top: '0',
+    right: '0'
   };
 
   const titleStyle = {
     color: '#333',
-    marginBottom: '10px'
+    marginBottom: '10px',
+    paddingRight: '60px'
   };
 
   const descriptionStyle = {
@@ -63,6 +72,9 @@ const RecipeDetails = ({ recipeId }) => {
   return (
     <div style={containerStyle}>
       <div style={headerStyle}>
+        <div style={favoriteHeaderStyle}>
+          <FavoriteButton recipeId={recipe.id} size="large" />
+        </div>
         <h1 style={titleStyle}>{recipe.title}</h1>
         <small style={{ color: '#888' }}>Recipe ID: {recipe.id}</small>
       </div>
