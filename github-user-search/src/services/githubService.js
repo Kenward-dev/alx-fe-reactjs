@@ -34,8 +34,8 @@ export const searchUsers = async (searchParams, page = 1, perPage = 30) => {
     if (searchParams.minRepos) {
       query += ` repos:>=${searchParams.minRepos}`;
     }
-    
-    const response = await githubApi.get('/search/users', {
+
+    const response = await githubApi.get('/search/users?q', {
       params: {
         q: query,
         page,
