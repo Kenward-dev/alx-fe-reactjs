@@ -1,4 +1,4 @@
-import SearchBar from './components/SearchBar';
+import SearchBar from './components/Search';
 import UserList from './components/UserList';
 import useUserStore from './store/useUserStore';
 import './App.css';

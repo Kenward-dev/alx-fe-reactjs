@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { searchUsers } from '../services/githubApi';
+import { fetchUserData } from '../services/githubService';
 
 const useUserStore = create((set, get) => ({
   users: [],
@@ -7,7 +7,7 @@ const useUserStore = create((set, get) => ({
   error: null,
   hasSearched: false,
 
-  searchUsers: async (searchTerm) => {
+  fetchUserData: async (searchTerm) => {
     set({ 
       isLoading: true, 
       error: null, 
@@ -15,7 +15,7 @@ const useUserStore = create((set, get) => ({
     });
 
     try {
-      const data = await searchUsers(searchTerm);
+      const data = await fetchUserData(searchTerm);
       set({ 
         users: data.items || [], 
         isLoading: false 
