@@ -503,5 +503,6 @@ const Search = () => {
     </div>
   );
 };
+//const fetchUserData = async (username) => {
 
 export default Search;
